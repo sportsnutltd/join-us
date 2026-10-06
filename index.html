@@ -65,6 +65,13 @@ button.submit:disabled{opacity:.6;cursor:wait}
 #thanks img{width:160px}
 footer{text-align:center;font-size:13px;color:var(--muted);padding:0 16px 30px;font-weight:600}
 footer a{color:var(--navy)}
+.award{display:flex;flex-direction:column;gap:6px}
+.award .sub{font-weight:500;color:var(--muted);font-size:13.5px}
+.adate{margin:0 0 4px 34px}
+.opts .adate label{font-weight:600;font-size:14px;display:block;margin-bottom:4px;border:0;padding:0;background:none;border-radius:0;cursor:default}
+.opts .adate input{width:100%;max-width:240px;height:auto;margin:0}
+.adate.invalid input{border-color:var(--red)}
+.adate.invalid .err{display:block}
 .hidden{display:none}
 </style>
 </head>
@@ -140,13 +147,14 @@ footer a{color:var(--navy)}
     <h2><span class="num">2</span>Qualifications</h2>
     <div class="q" data-req data-group="qual"><span class="lbl">What is your highest swimming teaching qualification? <span class="req">*</span></span>
       <div class="opts stack">
-        <label><input type="radio" name="qual" value="Swim England Level 2">Swim England Level 2 Swimming Teacher</label>
-        <label><input type="radio" name="qual" value="STA Level 2 / STA Certificate">STA Level 2 Award / STA Certificate</label>
-        <label><input type="radio" name="qual" value="Swim England Level 1">Swim England Level 1 (Swimming Assistant)</label>
-        <label><input type="radio" name="qual" value="STA Level 1">STA Level 1</label>
-        <label><input type="radio" name="qual" value="Training towards Level 1 or 2">Currently training towards Level 1 or 2</label>
-        <label><input type="radio" name="qual" value="Other (overseas or equivalent)">Other (e.g. overseas or equivalent)</label>
-        <label><input type="radio" name="qual" value="None">None yet</label>
+        <label><input type="radio" name="qual" value="Swim England Level 1 (Swimming Assistant)">Swim England Level 1 (Swimming Assistant)</label>
+        <label><input type="radio" name="qual" value="Swim England Level 2 (Swimming Teacher)">Swim England Level 2 (Swimming Teacher)</label>
+        <label><input type="radio" name="qual" value="STA Award (part qualified to teach)">STA Award (part qualified to teach)</label>
+        <label><input type="radio" name="qual" value="STA Certificate (fully qualified to teach)">STA Certificate (fully qualified to teach)</label>
+        <label><input type="radio" name="qual" value="STA Level 2 Swimming Teacher (new from 2026 onwards)">STA Level 2 Swimming Teacher (new from 2026 onwards)</label>
+        <label><input type="radio" name="qual" value="Other (e.g. overseas or equivalent)">Other (e.g. overseas or equivalent)</label>
+        <label><input type="radio" name="qual" value="Currently in training to become a qualified swimming teacher">Currently in training to become a qualified swimming teacher</label>
+        <label><input type="radio" name="qual" value="None yet, but keen to get qualified">None yet, but keen to get qualified</label>
       </div><div class="err">Please choose one</div></div>
 
     <div class="row2">
@@ -154,14 +162,28 @@ footer a{color:var(--navy)}
       <div class="q"><label for="qualOther">Other / equivalent qualification details</label><input type="text" id="qualOther" name="qualOther"></div>
     </div>
 
-    <div class="q"><span class="lbl">Do you hold any of these? <span class="hint">Tick all that apply</span></span>
+    <div class="q" id="awardsQ"><span class="lbl">Do you hold any of these? <span class="hint">Tick all that apply, and tell us roughly when you got it</span></span>
       <div class="opts stack">
-        <label><input type="checkbox" name="otherQuals" value="NRASTC (pool rescue for teachers)">NRASTC (rescue award for swimming teachers &amp; coaches)</label>
-        <label><input type="checkbox" name="otherQuals" value="NPLQ lifeguard">NPLQ (pool lifeguard)</label>
-        <label><input type="checkbox" name="otherQuals" value="First aid">First aid certificate</label>
-        <label><input type="checkbox" name="otherQuals" value="Safeguarding course">Safeguarding children course</label>
-        <label><input type="checkbox" name="otherQuals" value="Swimming coaching qualification">Swimming coaching qualification</label>
-        <label><input type="checkbox" name="otherQuals" value="Diving / synchro / other aquatics">Diving, synchro or other aquatics qualification</label>
+        <div class="award">
+          <label><input type="checkbox" name="otherQuals" value="NRASTC"><span>NRASTC <span class="sub">(rescue award for swimming teachers &amp; coaches)</span></span></label>
+          <div class="adate hidden"><label for="aw0">Date obtained <span class="req">*</span></label><input type="text" id="aw0" data-award="NRASTC" inputmode="numeric" placeholder="MM/YYYY, e.g. 03/2025"><div class="err">Please enter the month and year, e.g. 03/2025</div></div>
+        </div>
+        <div class="award">
+          <label><input type="checkbox" name="otherQuals" value="STA Safety Award for Teachers"><span>STA Safety Award for Teachers</span></label>
+          <div class="adate hidden"><label for="aw1">Date obtained <span class="req">*</span></label><input type="text" id="aw1" data-award="STA Safety Award for Teachers" inputmode="numeric" placeholder="MM/YYYY, e.g. 03/2025"><div class="err">Please enter the month and year, e.g. 03/2025</div></div>
+        </div>
+        <div class="award">
+          <label><input type="checkbox" name="otherQuals" value="NPLQ"><span>NPLQ <span class="sub">(pool lifeguard)</span></span></label>
+          <div class="adate hidden"><label for="aw2">Date obtained <span class="req">*</span></label><input type="text" id="aw2" data-award="NPLQ" inputmode="numeric" placeholder="MM/YYYY, e.g. 03/2025"><div class="err">Please enter the month and year, e.g. 03/2025</div></div>
+        </div>
+        <div class="award">
+          <label><input type="checkbox" name="otherQuals" value="Safeguarding Children Course"><span>Safeguarding Children Course</span></label>
+          <div class="adate hidden"><label for="aw3">Date obtained <span class="req">*</span></label><input type="text" id="aw3" data-award="Safeguarding Children Course" inputmode="numeric" placeholder="MM/YYYY, e.g. 03/2025"><div class="err">Please enter the month and year, e.g. 03/2025</div></div>
+        </div>
+        <div class="award">
+          <label><input type="checkbox" name="otherQuals" value="Swimming Coaching Qualification"><span>Swimming Coaching Qualification <span class="sub">(a step up from swimming teacher)</span></span></label>
+          <div class="adate hidden"><label for="aw4">Date obtained <span class="req">*</span></label><input type="text" id="aw4" data-award="Swimming Coaching Qualification" inputmode="numeric" placeholder="MM/YYYY, e.g. 03/2025"><div class="err">Please enter the month and year, e.g. 03/2025</div></div>
+        </div>
       </div></div>
 
     <div class="q" data-req data-group="dbs"><span class="lbl">Do you have an enhanced DBS certificate? <span class="req">*</span><span class="hint">Don't worry if not – we can arrange one</span></span>
@@ -350,6 +372,27 @@ footer a{color:var(--navy)}
   form.querySelectorAll('input[name="venues"]').forEach(i => i.addEventListener('change', syncSites));
   syncSites();
 
+  // Award date boxes
+  form.querySelectorAll('input[name="otherQuals"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const box = cb.closest('.award').querySelector('.adate');
+      box.classList.toggle('hidden', !cb.checked);
+      if (!cb.checked) { box.classList.remove('invalid'); box.querySelector('input').value = ''; }
+    });
+  });
+  form.addEventListener('input', e => { const d = e.target.closest('.adate'); if (d) d.classList.remove('invalid'); });
+  function checkAwards(){
+    let first = null;
+    form.querySelectorAll('.adate:not(.hidden)').forEach(d => {
+      const v = d.querySelector('input').value.trim();
+      const m = v.match(/^(\d{1,2})\s*[\/\-.]\s*(\d{4})$/);
+      const ok = !!m && +m[1] >= 1 && +m[1] <= 12 && +m[2] >= 1970 && +m[2] <= new Date().getFullYear();
+      d.classList.toggle('invalid', !ok);
+      if (!ok && !first) first = d;
+    });
+    return first;
+  }
+
   heard.addEventListener('change', () => {
     refWrap.classList.toggle('hidden', !/friend/i.test(heard.value));
   });
@@ -405,6 +448,11 @@ footer a{color:var(--navy)}
       data[k] = data[k] === undefined ? [] : [].concat(data[k]);
     });
     Object.keys(data).forEach(k => { if (typeof data[k] === 'string') data[k] = data[k].trim(); });
+    data.otherQuals = data.otherQuals.map(q => {
+      const inp = form.querySelector('.adate input[data-award="' + q + '"]');
+      const m = inp ? inp.value.trim().match(/^(\d{1,2})\s*[\/\-.]\s*(\d{4})$/) : null;
+      return m ? q + ' (' + ('0' + m[1]).slice(-2) + '/' + m[2] + ')' : q;
+    });
     return data;
   }
 
@@ -413,6 +461,7 @@ footer a{color:var(--navy)}
     statusEl.textContent = ''; statusEl.className = 'status';
     let firstBad = null;
     form.querySelectorAll('.q[data-req]:not(.hidden)').forEach(q => { if (!checkQ(q) && !firstBad) firstBad = q; });
+    const badAward = checkAwards(); if (badAward && !firstBad) firstBad = badAward;
     if (!checkCv() && !firstBad) firstBad = document.getElementById('cvQ');
     if (firstBad) {
       firstBad.scrollIntoView({behavior:'smooth', block:'center'});
