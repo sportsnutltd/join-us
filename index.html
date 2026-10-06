@@ -264,9 +264,22 @@ footer a{color:var(--navy)}
 
   <!-- 5. MORE ABOUT YOU -->
   <section class="card">
-    <h2><span class="num">5</span>A bit more about you</h2>
-    <div class="q" data-req><label for="whyUs">Why would you like to teach with Sports Nut? <span class="req">*</span></label><textarea id="whyUs" name="whyUs"></textarea><div class="err">Please tell us a little</div></div>
-    <div class="q" data-req><label for="greatLesson">In a few sentences, what makes a great swimming lesson for a nervous beginner? <span class="req">*</span></label><textarea id="greatLesson" name="greatLesson"></textarea><div class="err">Please tell us a little</div></div>
+    <h2><span class="num">5</span>Getting in touch</h2>
+    <div class="q" data-req data-group="contactBy"><span class="lbl">How are you happy for us to contact you? <span class="req">*</span><span class="hint">Tick all that apply</span></span>
+      <div class="opts">
+        <label><input type="checkbox" name="contactBy" value="Email">Email</label>
+        <label><input type="checkbox" name="contactBy" value="WhatsApp">WhatsApp</label>
+        <label><input type="checkbox" name="contactBy" value="Text message">Text message</label>
+        <label><input type="checkbox" name="contactBy" value="Phone call">Phone call</label>
+      </div><div class="err">Please choose at least one</div></div>
+
+    <div class="q"><span class="lbl">When is the best time to reach you?<span class="hint">Tick all that apply</span></span>
+      <div class="opts">
+        <label><input type="checkbox" name="contactTime" value="Weekday daytime">Weekday daytime</label>
+        <label><input type="checkbox" name="contactTime" value="Weekday evening">Weekday evening</label>
+        <label><input type="checkbox" name="contactTime" value="Weekends">Weekends</label>
+        <label><input type="checkbox" name="contactTime" value="Any time">Any time</label>
+      </div></div>
 
     <div class="q" data-req><label for="heardFrom">Where did you hear about this job? <span class="req">*</span></label>
       <select id="heardFrom" name="heardFrom">
@@ -388,7 +401,7 @@ footer a{color:var(--navy)}
       else data[k] = [].concat(data[k], v);
     }
     // Make multi-choice answers always lists
-    ['venues','otherQuals','taught','daysDavenies','daysGodstowe','extras'].forEach(k => {
+    ['venues','otherQuals','taught','daysDavenies','daysGodstowe','extras','contactBy','contactTime'].forEach(k => {
       data[k] = data[k] === undefined ? [] : [].concat(data[k]);
     });
     Object.keys(data).forEach(k => { if (typeof data[k] === 'string') data[k] = data[k].trim(); });
