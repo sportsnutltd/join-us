@@ -315,10 +315,11 @@ footer a{color:var(--navy)}
         <option>Indeed</option>
         <option>Sports Nut website</option>
         <option>A friend / someone who works at Sports Nut</option>
+        <option>A Sports Nut parent recommended me</option>
         <option>I'm a Sports Nut parent / swimmer</option>
         <option>Other</option>
       </select><div class="err">Please choose one</div></div>
-    <div class="q hidden" id="referrerWrap"><label for="referrer">Who referred you?</label><input type="text" id="referrer" name="referrer"></div>
+    <div class="q hidden" id="referrerWrap"><label for="referrer">Who referred you?<span class="hint">Their full name, so we can say thank you</span></label><input type="text" id="referrer" name="referrer"></div>
 
     <div class="q" id="cvQ"><span class="lbl">Upload your CV (optional)<span class="hint">PDF or Word document, up to 5MB</span></span>
       <div class="file"><input type="file" id="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></div>
@@ -394,7 +395,7 @@ footer a{color:var(--navy)}
   }
 
   heard.addEventListener('change', () => {
-    refWrap.classList.toggle('hidden', !/friend/i.test(heard.value));
+    refWrap.classList.toggle('hidden', !/friend|recommended/i.test(heard.value));
   });
 
   // Clear an error as soon as the person fixes it
